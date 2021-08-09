@@ -1,0 +1,2 @@
+https://automating-gis-processes.github.io/CSC/lessons/L6/static-maps.html
+https://github.com/geopandas/geopandas/issues/1166

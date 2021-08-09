@@ -1,0 +1,36 @@
+GIS files for OK_ClassII have these extensions:
+cpg (contains one line "UTF-8")
+dbf: unreadable (dBASE file of attributes based on geometry column of main)
+prj: (apparently metada like timezone and units of measure)
+sbn: unreadable
+sbx: unreadable
+shx: unreadable (offset of records fr: beginning of file)
+shp: unreadable (each record = shape)
+
+Good tutorial here:
+https://towardsdatascience.com/walkthrough-mapping-gis-data-in-python-92c77cd2b87a
+
+Geopandas allows modeling of points, lines, and polygons from Shapely.  Shapely depends on rtree and spatialindex.
+
+import pandas as pd  # provides interface for interacting with tabular data
+import geopandas as gpd  #  pandas + shapely for geospatial operations
+from shapely.geometry import Point, Polygon, MultiPolygon  # text -> shapes 
+from shapely import wkt  # well known text ('experanto') 
+import rtree  # supports geospatial join
+
+Shapefiles are a cluster of files (cpg, dbf, prj, shp, shx).  Limitations: headers max len = 10 char; text max len 254 char; max fields is 255.
+
+Examle uses Planned Unit Developments (PDUs): https://opendata.dc.gov/datasets/planned-unit-development-puds
+
+.. and Affordable Housing:  https://opendata.dc.gov/datasets/affordable-housing
+
+Data goes on Google Drive;
+    MyDrive
+        gis
+            input
+                Affordable_Housing.cvs
+                <unzipped contents of PUD>
+                https://drive.google.com/open?id=1RxxikCuiAelk71giceUrJWNAK34KBwDF
+            output
+
+conda install -y google-auth ipykernel pandas geopandas nbclient postgresql  openpyxl     
